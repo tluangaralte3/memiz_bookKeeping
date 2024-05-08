@@ -33,7 +33,7 @@ class _ManageCategoriesScreenState extends State<ManageCategoriesScreen> {
         },
         label: Text(
           'Add Category',
-          style: AppStyles.buttonWhite,
+          style: AppStyles.body2,
         ),
       ),
       body: BlocBuilder<EntriesControlBloc, EntriesControlState>(

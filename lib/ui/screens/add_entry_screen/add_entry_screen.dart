@@ -183,7 +183,7 @@ class _AddEntryScreenState extends State<AddEntryScreen> {
               child: Text(
                 'Add category',
                 style: const TextStyle(
-                    color: AppColors.activeBlue,
+                    color: AppColors.mainText,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
               ),

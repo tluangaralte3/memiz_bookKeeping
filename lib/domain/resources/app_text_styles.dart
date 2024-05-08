@@ -33,10 +33,10 @@ class AppStyles {
     disabledBackgroundColor: AppColors.borderGrey,
     disabledForegroundColor: AppColors.subTitle,
     padding: const EdgeInsets.symmetric(vertical: 12),
-    backgroundColor: AppColors.activeBlue,
+    backgroundColor: AppColors.appRed,
     textStyle: AppStyles.buttonWhite,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(5),
     ),
   );
 }

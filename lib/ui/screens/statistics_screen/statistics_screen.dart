@@ -41,9 +41,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           floatingActionButton: FloatingActionButton.extended(
             icon: const Icon(
               Icons.file_download_outlined,
-              color: Colors.white,
+              color: Colors.black,
             ),
-            label: Text("Report"),
+            label: Text("Download Report"),
             onPressed: state.statistics.isNotEmpty
                 ? () async {
                     await createOpenPdf(

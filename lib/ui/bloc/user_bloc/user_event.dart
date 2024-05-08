@@ -15,13 +15,22 @@ class CreateUserEvent extends UserEvent {
   final String name;
   final String pin;
   final String email;
+  final String shopname;
+  final String shopaddress;
+  final String gstnumber;
+  final int phonenumber;
   final bool biometrics;
 
-  const CreateUserEvent(
-      {required this.name,
-      required this.pin,
-      required this.email,
-      required this.biometrics});
+  const CreateUserEvent({
+    required this.name,
+    required this.pin,
+    required this.email,
+    required this.shopname,
+    required this.shopaddress,
+    required this.gstnumber,
+    required this.phonenumber,
+    required this.biometrics,
+  });
 }
 
 class SignInEvent extends UserEvent {
@@ -33,15 +42,16 @@ class SignInEvent extends UserEvent {
 class SuccessfullySignedIn extends UserEvent {}
 
 class SignOutEvent extends UserEvent {}
-class ChooseAvatarEvent extends UserEvent{
+
+class ChooseAvatarEvent extends UserEvent {
   final String path;
 
   const ChooseAvatarEvent(this.path);
 }
-class ValidateUserEvent extends UserEvent{
+
+class ValidateUserEvent extends UserEvent {
   final String name;
   final String email;
 
- const ValidateUserEvent({required this.name, required this.email});
-
+  const ValidateUserEvent({required this.name, required this.email});
 }

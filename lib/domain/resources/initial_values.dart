@@ -40,6 +40,7 @@ class InitialValues {
     {'color': 'FFE0B2', 'icon': AppIcons.institute},
     {'color': 'C5CAE9', 'icon': AppIcons.savings},
     {'color': 'C8E6C9', 'icon': AppIcons.money},
+    {'color': '647364', 'icon': AppIcons.home},
   ];
 
   static final List<Map<String, String>> faq = [

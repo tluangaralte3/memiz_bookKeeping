@@ -22,7 +22,7 @@ class _AvatarPickState extends State<AvatarPick> {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return DottedBorder(
-          borderType: BorderType.Circle,
+          borderType: BorderType.Rect,
           strokeWidth: 2,
           dashPattern: const [5, 2],
           child: Center(
@@ -46,7 +46,7 @@ class _AvatarPickState extends State<AvatarPick> {
                             AppIcons.noAvatar,
                             width: 96,
                             height: 96,
-                            color: AppColors.subTitle,
+                            color: AppColors.mainText,
                           ),
                         ] else ...[
                           Image.file(
@@ -59,7 +59,7 @@ class _AvatarPickState extends State<AvatarPick> {
                         Center(
                             child: SvgPicture.asset(
                           AppIcons.addPlus,
-                          color: AppColors.activeBlue,
+                          color: Color.fromARGB(255, 104, 104, 104),
                         ))
                       ],
                     ),

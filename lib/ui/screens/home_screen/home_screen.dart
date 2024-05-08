@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         icon: SvgPicture.asset(
           AppIcons.addPlus,
-          color: Colors.white,
+          color: Colors.black,
         ),
         label: const Text("Add New"),
         onPressed: () {

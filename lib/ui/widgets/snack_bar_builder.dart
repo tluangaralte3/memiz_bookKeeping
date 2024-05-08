@@ -4,7 +4,7 @@ import 'package:memiz_bk/main.dart';
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? buildShowSnackBar(
     BuildContext context, String message) {
-  return KittyApp.rootScaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
+  return MemizBook.rootScaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
     behavior: SnackBarBehavior.floating,
     margin: EdgeInsets.only(
       left: 16,
@@ -23,7 +23,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? buildShowSnackBar(
         ),
         InkWell(
           onTap: () {
-            KittyApp.rootScaffoldMessengerKey.currentState
+            MemizBook.rootScaffoldMessengerKey.currentState
                 ?.hideCurrentSnackBar();
           },
           child: const Icon(

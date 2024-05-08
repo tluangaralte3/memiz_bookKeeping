@@ -13,11 +13,19 @@ class BiometricsDialog extends StatefulWidget {
     required this.name,
     required this.email,
     required this.pin,
+    required this.shopname,
+    required this.shopaddress,
+    required this.phonenumber,
+    required this.gst,
   }) : super(key: key);
 
   final String name;
   final String email;
   final String pin;
+  final String shopname;
+  final String shopaddress;
+  final String phonenumber;
+  final String gst;
 
   @override
   State<BiometricsDialog> createState() => _BiometricsDialogState();
@@ -68,10 +76,15 @@ class _BiometricsDialogState extends State<BiometricsDialog> {
               if (ifAuth && mounted) {
                 Navigator.of(context).pop();
                 context.read<UserBloc>().add(CreateUserEvent(
-                    name: widget.name,
-                    pin: widget.pin,
-                    email: widget.email,
-                    biometrics: true));
+                      name: widget.name,
+                      pin: widget.pin,
+                      email: widget.email,
+                      biometrics: true,
+                      shopname: widget.shopname,
+                      shopaddress: widget.shopaddress,
+                      gstnumber: widget.gst,
+                      phonenumber: int.parse(widget.phonenumber),
+                    ));
               }
             },
             child: Text(
@@ -82,10 +95,15 @@ class _BiometricsDialogState extends State<BiometricsDialog> {
             onPressed: () {
               Navigator.of(context).pop();
               context.read<UserBloc>().add(CreateUserEvent(
-                  name: widget.name,
-                  pin: widget.pin,
-                  email: widget.email,
-                  biometrics: false));
+                    name: widget.name,
+                    pin: widget.pin,
+                    email: widget.email,
+                    biometrics: false,
+                    shopname: widget.shopname,
+                    shopaddress: widget.shopaddress,
+                    gstnumber: widget.gst,
+                    phonenumber: int.parse(widget.phonenumber),
+                  ));
             },
             child: Text(
               'No',

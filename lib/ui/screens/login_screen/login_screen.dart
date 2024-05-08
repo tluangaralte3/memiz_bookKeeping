@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screen_lock/flutter_screen_lock.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,12 +50,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: Column(
                       children: [
-                        SvgPicture.asset(AppIcons.logo),
+                        Image.asset(
+                          AppIcons.logo,
+                          width: 150,
+                        ),
                         const SizedBox(
                           height: 16,
                         ),
                         const Text(
-                          'Memiz',
+                          'Memiz BookKeeping',
                           style: AppStyles.menuPageTitle,
                         ),
                       ],
@@ -63,21 +67,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 24,
                   ),
-                  Wrap(
-                    children: [
-                      const Icon(Icons.login, color: AppColors.title),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        'Sign in',
-                        style: const TextStyle(
-                            color: AppColors.title,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
+                  // const Wrap(
+                  //   children: [
+                  //     Icon(Icons.login, color: AppColors.title),
+                  //     SizedBox(
+                  //       width: 8,
+                  //     ),
+                  //     Text(
+                  //       'Sign in',
+                  //       style: TextStyle(
+                  //           color: AppColors.title,
+                  //           fontSize: 18,
+                  //           fontWeight: FontWeight.w700),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -104,27 +108,37 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )
                   ] else ...[
-                    TextButton(
-                      onPressed: () {
-                        context.read<UserBloc>().add(InitialUserEvent());
-                        Navigator.of(context)
-                            .pushNamed(RegistrationScreen.routeName);
-                      },
-                      child: Text('Sign up', style: AppStyles.button),
-                    ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          backgroundColor: Theme.of(context).primaryColor,
+                          backgroundColor: Colors.red,
                         ),
                         onPressed: () {
                           context
                               .read<UserBloc>()
                               .add(SignInEvent(emailController.text));
                         },
-                        child: Center(child: Text('Sign in')))
+                        child: const Center(
+                            child: Text('Sign in', style: AppStyles.button))),
+                    TextButton(
+                      onPressed: () {
+                        context.read<UserBloc>().add(InitialUserEvent());
+                        Navigator.of(context)
+                            .pushNamed(RegistrationScreen.routeName);
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Account la neilo tan',
+                              style: TextStyle(color: Colors.black38)),
+                          Text(' Ziahluh na',
+                              style: TextStyle(
+                                  color: Color.fromARGB(96, 255, 5, 5))),
+                        ],
+                      ),
+                    ),
                   ]
                 ],
               ),

@@ -17,14 +17,14 @@ void main() async {
       // assetLoader: const CodegenLoader(),
       child: BlocProvider(
         create: (context) => UserBloc()..add(CallLatestUserEvent()),
-        child: const KittyApp(),
+        child: const MemizBook(),
       ),
     ),
   );
 }
 
-class KittyApp extends StatelessWidget {
-  const KittyApp({
+class MemizBook extends StatelessWidget {
+  const MemizBook({
     super.key,
   });
 

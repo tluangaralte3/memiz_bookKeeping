@@ -25,6 +25,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController surnameController = TextEditingController();
+  final TextEditingController shopnameController = TextEditingController();
+  final TextEditingController shopaddressController = TextEditingController();
+  final TextEditingController gstController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +66,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Center(
                       child: Column(
                         children: [
-                          SvgPicture.asset(AppIcons.logo),
+                          Image.asset(
+                            AppIcons.logo,
+                            width: 150,
+                          ),
                           const SizedBox(
                             height: 16,
                           ),
                           const Text(
-                            'Memiz',
+                            'Memiz BookKeeping',
                             style: AppStyles.menuPageTitle,
                           ),
                         ],
@@ -80,22 +87,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     const SizedBox(
                       height: 16,
                     ),
-                    const Wrap(
-                      children: [
-                        Icon(Icons.app_registration_outlined,
-                            color: AppColors.title),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          "Signup",
-                          style: TextStyle(
-                              color: AppColors.title,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
+                    // const Wrap(
+                    //   children: [
+                    //     Icon(Icons.app_registration_outlined,
+                    //         color: AppColors.title),
+                    //     SizedBox(
+                    //       width: 8,
+                    //     ),
+                    //     Text(
+                    //       "Signup",
+                    //       style: TextStyle(
+                    //           color: AppColors.title,
+                    //           fontSize: 18,
+                    //           fontWeight: FontWeight.w700),
+                    //     ),
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 16,
                     ),
@@ -139,6 +146,46 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     const SizedBox(
                       height: 16,
                     ),
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      controller: shopnameController,
+                      decoration: InputDecoration(
+                        labelText: "Dawr hming",
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      controller: shopaddressController,
+                      decoration: InputDecoration(
+                        labelText: "Dawr awmna",
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      controller: gstController,
+                      decoration: InputDecoration(
+                        labelText: "GST No.",
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextField(
+                      keyboardType: TextInputType.phone,
+                      controller: phoneController,
+                      decoration: InputDecoration(
+                        labelText: "Phone No.",
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     if (state.status == AuthStatus.error) ...[
                       Text(state.errorMessage, style: AppStyles.appRed),
                       const SizedBox(
@@ -160,8 +207,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   '${surnameController.text}',
                               email: emailController.text));
                         },
-                        child: Center(
-                          child: Text("Signup"),
+                        child: const Center(
+                          child: Text(
+                            "Signup",
+                            style: AppStyles.button,
+                          ),
                         ),
                       )
                     ]
@@ -190,15 +240,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   name: '${nameController.text} ${surnameController.text}',
                   email: emailController.text,
                   pin: value,
+                  shopname: shopnameController.text,
+                  shopaddress: shopaddressController.text,
+                  phonenumber: phoneController.text,
+                  gst: gstController.text,
                 );
               });
         } else {
           Navigator.of(context).pop();
           context.read<UserBloc>().add(CreateUserEvent(
-              name: '${nameController.text} ${surnameController.text}',
-              pin: value,
-              email: emailController.text,
-              biometrics: false));
+                name: '${nameController.text} ${surnameController.text}',
+                pin: value,
+                email: emailController.text,
+                biometrics: false,
+                shopname: shopnameController.text,
+                shopaddress: shopaddressController.text,
+                gstnumber: gstController.text,
+                phonenumber: int.parse(phoneController.text),
+              ));
         }
       },
     );

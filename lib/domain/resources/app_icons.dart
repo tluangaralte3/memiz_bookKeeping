@@ -3,6 +3,7 @@ class AppIcons {
 
   //path variables
   static const String _path = 'assets/icons';
+  static const String _pathLogos = 'assets/images';
   static const String _pathCategories = 'assets/icons/categories';
 
   // general
@@ -17,7 +18,7 @@ class AppIcons {
   static const String history = '$_path/history.svg';
   static const String home = '$_path/home.svg';
   static const String homeFilled = '$_path/home_filled.svg';
-  static const String logo = '$_path/logo.svg';
+  static const String logo = '$_pathLogos/memiz_logo1.png';
   static const String moreVert = '$_path/more_vert.svg';
   static const String northWest = '$_path/north_west.svg';
   static const String pieChart = '$_path/pie_chart.svg';
@@ -32,8 +33,6 @@ class AppIcons {
   static const String wallet = '$_path/wallet.svg';
   static const String faceId = '$_path/faceid.svg';
   static const String noAvatar = '$_path/no_avatar.svg';
-
-
 
   // categories
   static const String cafe = '$_pathCategories/cafe.svg';
