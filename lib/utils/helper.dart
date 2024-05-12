@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memiz_bk/domain/models/entry_model/entry.dart';
-import 'package:memiz_bk/domain/models/statistics_element_model/statistics_element.dart';
+import 'package:memiz_bk/domain/models/statistics_element_model/expensereport_element.dart';
 import 'package:memiz_bk/domain/resources/initial_values.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
@@ -59,7 +59,7 @@ int findElement(Set<int> months, int current, int onFound) {
 }
 
 Future<void> createOpenPdf(
-    {required List<StatisticsElement> statistics,
+    {required List<ExpenseReportElement> statistics,
     required DateTime reportDate}) async {
   final data = await buildPdf(
     selectedMonth: reportDate,
@@ -84,7 +84,7 @@ Future<String> savePdfFile(
 
 Future<Uint8List> buildPdf({
   required DateTime selectedMonth,
-  required List<StatisticsElement> stats,
+  required List<ExpenseReportElement> stats,
 }) async {
   final regularData = await rootBundle.load("assets/fonts/Inter-Regular.ttf");
   final mediumData = await rootBundle.load("assets/fonts/Inter-Medium.ttf");

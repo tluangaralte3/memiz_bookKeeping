@@ -19,3 +19,19 @@ Map<String, dynamic> _$$CategoryIconImplToJson(_$CategoryIconImpl instance) =>
       'localPath': instance.localPath,
       'color': instance.color,
     };
+
+_$IncomeCategoryIconImpl _$$IncomeCategoryIconImplFromJson(
+        Map<String, dynamic> json) =>
+    _$IncomeCategoryIconImpl(
+      iconId: (json['iconId'] as num).toInt(),
+      localPath: json['localPath'] as String,
+      color: json['color'] as String,
+    );
+
+Map<String, dynamic> _$$IncomeCategoryIconImplToJson(
+        _$IncomeCategoryIconImpl instance) =>
+    <String, dynamic>{
+      'iconId': instance.iconId,
+      'localPath': instance.localPath,
+      'color': instance.color,
+    };

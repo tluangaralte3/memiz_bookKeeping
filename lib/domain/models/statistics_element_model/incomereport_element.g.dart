@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'statistics_element.dart';
+part of 'incomereport_element.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StatisticsElementImpl _$$StatisticsElementImplFromJson(
+_$IncomeStatisticsElementImpl _$$IncomeStatisticsElementImplFromJson(
         Map<String, dynamic> json) =>
-    _$StatisticsElementImpl(
+    _$IncomeStatisticsElementImpl(
       categoryTitle: json['categoryTitle'] as String,
       countOfEntries: (json['countOfEntries'] as num).toInt(),
       totalAmount: (json['totalAmount'] as num).toInt(),
@@ -16,8 +16,8 @@ _$StatisticsElementImpl _$$StatisticsElementImplFromJson(
       icon: CategoryIcon.fromJson(json['icon'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$StatisticsElementImplToJson(
-        _$StatisticsElementImpl instance) =>
+Map<String, dynamic> _$$IncomeStatisticsElementImplToJson(
+        _$IncomeStatisticsElementImpl instance) =>
     <String, dynamic>{
       'categoryTitle': instance.categoryTitle,
       'countOfEntries': instance.countOfEntries,

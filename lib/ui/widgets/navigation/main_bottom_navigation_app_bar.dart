@@ -21,7 +21,7 @@ class MainBottomNavigationAppBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: SvgPicture.asset(AppIcons.pieChart),
           activeIcon: SvgPicture.asset(AppIcons.pieChartFilled),
-          label: "Stats",
+          label: "Report",
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(AppIcons.home),

@@ -36,7 +36,7 @@ class BalanceWidget extends StatelessWidget {
                       '${state.balance.expenses}',
                       style: AppStyles.appRed,
                     ),
-                    Text(
+                    const Text(
                       'Expenses',
                       style: AppStyles.caption,
                     )
@@ -58,7 +58,7 @@ class BalanceWidget extends StatelessWidget {
                             '${state.balance.balance}',
                             style: AppStyles.appGreen,
                           ),
-                    Text(
+                    const Text(
                       'Balance',
                       style: AppStyles.caption,
                     )
@@ -75,7 +75,7 @@ class BalanceWidget extends StatelessWidget {
                       '${state.balance.income}',
                       style: AppStyles.buttonBlack,
                     ),
-                    Text(
+                    const Text(
                       'Income',
                       style: AppStyles.caption,
                     )

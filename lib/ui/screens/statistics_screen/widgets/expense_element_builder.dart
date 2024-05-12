@@ -4,10 +4,10 @@ import 'package:memiz_bk/domain/resources/app_text_styles.dart';
 import 'package:memiz_bk/ui/bloc/entries_control_bloc/entries_control_bloc.dart';
 import 'package:memiz_bk/ui/widgets/icon_view.dart';
 
-class StatisticsElementBuilder extends StatelessWidget {
-  const StatisticsElementBuilder({
-    Key? key,
-  }) : super(key: key);
+class ExpenseReportElementBuilder extends StatelessWidget {
+  const ExpenseReportElementBuilder({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -186,3 +186,177 @@ abstract class _CategoryIcon implements CategoryIcon {
   _$$CategoryIconImplCopyWith<_$CategoryIconImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+IncomeCategoryIcon _$IncomeCategoryIconFromJson(Map<String, dynamic> json) {
+  return _IncomeCategoryIcon.fromJson(json);
+}
+
+/// @nodoc
+mixin _$IncomeCategoryIcon {
+  int get iconId => throw _privateConstructorUsedError;
+  String get localPath => throw _privateConstructorUsedError;
+  String get color => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $IncomeCategoryIconCopyWith<IncomeCategoryIcon> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $IncomeCategoryIconCopyWith<$Res> {
+  factory $IncomeCategoryIconCopyWith(
+          IncomeCategoryIcon value, $Res Function(IncomeCategoryIcon) then) =
+      _$IncomeCategoryIconCopyWithImpl<$Res, IncomeCategoryIcon>;
+  @useResult
+  $Res call({int iconId, String localPath, String color});
+}
+
+/// @nodoc
+class _$IncomeCategoryIconCopyWithImpl<$Res, $Val extends IncomeCategoryIcon>
+    implements $IncomeCategoryIconCopyWith<$Res> {
+  _$IncomeCategoryIconCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iconId = null,
+    Object? localPath = null,
+    Object? color = null,
+  }) {
+    return _then(_value.copyWith(
+      iconId: null == iconId
+          ? _value.iconId
+          : iconId // ignore: cast_nullable_to_non_nullable
+              as int,
+      localPath: null == localPath
+          ? _value.localPath
+          : localPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$IncomeCategoryIconImplCopyWith<$Res>
+    implements $IncomeCategoryIconCopyWith<$Res> {
+  factory _$$IncomeCategoryIconImplCopyWith(_$IncomeCategoryIconImpl value,
+          $Res Function(_$IncomeCategoryIconImpl) then) =
+      __$$IncomeCategoryIconImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int iconId, String localPath, String color});
+}
+
+/// @nodoc
+class __$$IncomeCategoryIconImplCopyWithImpl<$Res>
+    extends _$IncomeCategoryIconCopyWithImpl<$Res, _$IncomeCategoryIconImpl>
+    implements _$$IncomeCategoryIconImplCopyWith<$Res> {
+  __$$IncomeCategoryIconImplCopyWithImpl(_$IncomeCategoryIconImpl _value,
+      $Res Function(_$IncomeCategoryIconImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iconId = null,
+    Object? localPath = null,
+    Object? color = null,
+  }) {
+    return _then(_$IncomeCategoryIconImpl(
+      iconId: null == iconId
+          ? _value.iconId
+          : iconId // ignore: cast_nullable_to_non_nullable
+              as int,
+      localPath: null == localPath
+          ? _value.localPath
+          : localPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$IncomeCategoryIconImpl implements _IncomeCategoryIcon {
+  const _$IncomeCategoryIconImpl(
+      {required this.iconId, required this.localPath, required this.color});
+
+  factory _$IncomeCategoryIconImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IncomeCategoryIconImplFromJson(json);
+
+  @override
+  final int iconId;
+  @override
+  final String localPath;
+  @override
+  final String color;
+
+  @override
+  String toString() {
+    return 'IncomeCategoryIcon(iconId: $iconId, localPath: $localPath, color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IncomeCategoryIconImpl &&
+            (identical(other.iconId, iconId) || other.iconId == iconId) &&
+            (identical(other.localPath, localPath) ||
+                other.localPath == localPath) &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, iconId, localPath, color);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IncomeCategoryIconImplCopyWith<_$IncomeCategoryIconImpl> get copyWith =>
+      __$$IncomeCategoryIconImplCopyWithImpl<_$IncomeCategoryIconImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$IncomeCategoryIconImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IncomeCategoryIcon implements IncomeCategoryIcon {
+  const factory _IncomeCategoryIcon(
+      {required final int iconId,
+      required final String localPath,
+      required final String color}) = _$IncomeCategoryIconImpl;
+
+  factory _IncomeCategoryIcon.fromJson(Map<String, dynamic> json) =
+      _$IncomeCategoryIconImpl.fromJson;
+
+  @override
+  int get iconId;
+  @override
+  String get localPath;
+  @override
+  String get color;
+  @override
+  @JsonKey(ignore: true)
+  _$$IncomeCategoryIconImplCopyWith<_$IncomeCategoryIconImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

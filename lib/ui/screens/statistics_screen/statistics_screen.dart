@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memiz_bk/domain/resources/app_text_styles.dart';
 import 'package:memiz_bk/ui/bloc/entries_control_bloc/entries_control_bloc.dart';
+import 'package:memiz_bk/ui/screens/statistics_screen/widgets/income_element_builder.dart';
 import 'package:memiz_bk/ui/widgets/main_app_bar.dart';
 import 'package:memiz_bk/ui/widgets/month_picker/month_picker.dart';
 import 'package:memiz_bk/utils/helper.dart';
 
 import 'widgets/block_chart.dart';
-import 'widgets/statistics_element_builder.dart';
+import 'widgets/expense_element_builder.dart';
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({Key? key}) : super(key: key);
@@ -18,10 +19,14 @@ class StatisticsScreen extends StatefulWidget {
   State<StatisticsScreen> createState() => _StatisticsScreenState();
 }
 
-class _StatisticsScreenState extends State<StatisticsScreen> {
+class _StatisticsScreenState extends State<StatisticsScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -30,10 +35,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          appBar: const MainAppBar(
-            leading: Text(
-              'Statistics',
-              style: AppStyles.menuPageTitle,
+          appBar: AppBar(
+            automaticallyImplyLeading: false, // Remove back icon
+            title: const Center(child: Text('Report')),
+            bottom: TabBar(
+              controller: _tabController,
+              tabs: const [
+                Tab(text: 'Expense'),
+                Tab(text: 'Income'),
+              ],
             ),
           ),
           floatingActionButtonLocation:
@@ -43,7 +53,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               Icons.file_download_outlined,
               color: Colors.black,
             ),
-            label: Text("Download Report"),
+            label: const Text("Download Report"),
             onPressed: state.statistics.isNotEmpty
                 ? () async {
                     await createOpenPdf(
@@ -52,45 +62,68 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                   }
                 : null,
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          body: TabBarView(
+            controller: _tabController,
             children: [
-              const MonthPicker(
-                selectType: 'exact',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: Text(
-                  "Overview",
-                  style: AppStyles.overline,
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: BlockChart(
-                  stats: state.statistics,
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Text(
-                    "Details",
-                    style: AppStyles.overline,
+              // Expense Tab
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const MonthPicker(selectType: 'exact'),
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      'Overview',
+                      style: AppStyles.overline,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: BlockChart(
+                      stats: state.statistics,
+                    ),
+                  ),
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                      child: Text(
+                        'Details',
+                        style: AppStyles.overline,
+                      ),
+                    ),
+                  ),
+                  const ExpenseReportElementBuilder(),
+                ],
               ),
-              const StatisticsElementBuilder(),
+              // Income Tab
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MonthPicker(selectType: 'exact'),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      'Overview',
+                      style: AppStyles.overline,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  IncomeReportElementBuilder(),
+                ],
+              ),
             ],
           ),
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 }

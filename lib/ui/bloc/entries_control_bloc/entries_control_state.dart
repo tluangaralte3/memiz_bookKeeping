@@ -17,7 +17,8 @@ class EntriesControlState extends Equatable {
   final EntryCategory categoryToAdd;
   final CategoryIcon selectedIcon;
   final DatabaseStatus status;
-  final List<StatisticsElement> statistics;
+  final List<ExpenseReportElement> statistics;
+  final List<IncomeStatisticsElement> income;
 
   const EntriesControlState({
     this.reportDate,
@@ -34,6 +35,7 @@ class EntriesControlState extends Equatable {
     this.selectedIcon = EntriesControlBloc.zeroIcon,
     this.status = DatabaseStatus.initial,
     this.statistics = const [],
+    this.income = const [],
   });
 
   EntriesControlState copyWith({
@@ -46,7 +48,7 @@ class EntriesControlState extends Equatable {
     CategoryIcon? selectedIcon,
     DatabaseStatus? status,
     List<EntryDate>? entriesDates,
-    List<StatisticsElement>? statistics,
+    List<ExpenseReportElement>? statistics,
     DateTime? reportDate,
   }) {
     return EntriesControlState(
@@ -73,6 +75,76 @@ class EntriesControlState extends Equatable {
         entries,
         status,
         statistics,
+        reportDate,
+      ];
+}
+
+class IncomeControlState extends Equatable {
+  final DateTime? reportDate;
+  final List<IncomeCategory> expCategories;
+  final List<IncomeCategory> inCategories;
+  final Balance balance;
+  final Map<String, List<Entry>> entries;
+  final List<CategoryIcon> icons;
+  final IncomeCategory categoryToAdd;
+  final CategoryIcon selectedIcon;
+  final DatabaseStatus status;
+  final List<IncomeStatisticsElement> income;
+
+  const IncomeControlState({
+    this.reportDate,
+    this.expCategories = const [],
+    this.inCategories = const [],
+    this.balance = const Balance(
+      income: 0,
+      expenses: 0,
+      balance: 0,
+    ),
+    this.entries = const {},
+    this.icons = const [],
+    this.categoryToAdd = IncomeControlBloc.zeroCategory,
+    this.selectedIcon = IncomeControlBloc.zeroIcon,
+    this.status = DatabaseStatus.initial,
+    this.income = const [],
+  });
+
+  IncomeControlState copyWith({
+    List<IncomeCategory>? expCategories,
+    List<IncomeCategory>? inCategories,
+    Balance? balance,
+    Map<String, List<Entry>>? entries,
+    List<CategoryIcon>? icons,
+    IncomeCategory? categoryToAdd,
+    CategoryIcon? selectedIcon,
+    DatabaseStatus? status,
+    List<EntryDate>? entriesDates,
+    List<IncomeStatisticsElement>? income,
+    DateTime? reportDate,
+  }) {
+    return IncomeControlState(
+      expCategories: expCategories ?? this.expCategories,
+      inCategories: inCategories ?? this.inCategories,
+      balance: balance ?? this.balance,
+      entries: entries ?? this.entries,
+      icons: icons ?? this.icons,
+      categoryToAdd: categoryToAdd ?? this.categoryToAdd,
+      selectedIcon: selectedIcon ?? this.selectedIcon,
+      status: status ?? this.status,
+      income: income ?? this.income,
+      reportDate: reportDate ?? this.reportDate,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        expCategories,
+        inCategories,
+        categoryToAdd,
+        icons,
+        selectedIcon,
+        entries,
+        status,
+        income,
         reportDate,
       ];
 }

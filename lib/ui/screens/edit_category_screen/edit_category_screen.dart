@@ -73,7 +73,7 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
                                     icon: state.selectedIcon));
                             Navigator.of(context).pop();
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text('Category edited'),
                               ),
                             );

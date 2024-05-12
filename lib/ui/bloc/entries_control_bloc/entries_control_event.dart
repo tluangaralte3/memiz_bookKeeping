@@ -32,41 +32,46 @@ class CreateExpenseCategoryEvent extends EntriesControlEvent {
 class CreateEntryEvent extends EntriesControlEvent {
   final String amount;
   final String description;
-  CreateEntryEvent(
-      {required this.amount, required this.description});
+  CreateEntryEvent({required this.amount, required this.description});
 }
-class SelectEntriesByDateEvent extends EntriesControlEvent{
+
+class SelectEntriesByDateEvent extends EntriesControlEvent {
   final DateTime monthYear;
 
   SelectEntriesByDateEvent(this.monthYear);
-
 }
-class SetDateToEntriesEvent extends EntriesControlEvent{
+
+class SetDateToEntriesEvent extends EntriesControlEvent {
   final String type;
   final int year;
   final int month;
 
-  SetDateToEntriesEvent({required this.type, required this.year, required this.month});
+  SetDateToEntriesEvent(
+      {required this.type, required this.year, required this.month});
 }
-class SearchEntries extends EntriesControlEvent{
+
+class SearchEntries extends EntriesControlEvent {
   final List<int> categoryIds;
   final String searchValue;
 
   SearchEntries(this.categoryIds, this.searchValue);
 }
-class DeleteEntryEvent extends EntriesControlEvent{
+
+class DeleteEntryEvent extends EntriesControlEvent {
   final int entryId;
   DeleteEntryEvent(this.entryId);
 }
-class ReorderCategoriesEvent extends EntriesControlEvent{
+
+class ReorderCategoriesEvent extends EntriesControlEvent {
   final int oldIndex;
   final int newIndex;
 
   ReorderCategoriesEvent({required this.oldIndex, required this.newIndex});
 }
-class EditCategoryEvent extends EntriesControlEvent{
+
+class EditCategoryEvent extends EntriesControlEvent {
   final String newTitle;
   final CategoryIcon icon;
 
-  EditCategoryEvent({required this.newTitle,required this.icon});
+  EditCategoryEvent({required this.newTitle, required this.icon});
 }

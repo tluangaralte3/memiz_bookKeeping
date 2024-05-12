@@ -2,9 +2,12 @@ import 'package:memiz_bk/data/expenses_database.dart';
 import 'package:memiz_bk/domain/models/balance_model/balance.dart';
 import 'package:memiz_bk/domain/models/category_icon_model/category_icon.dart';
 import 'package:memiz_bk/domain/models/entry_category_model/entry_category.dart';
+import 'package:memiz_bk/domain/models/entry_category_model/income_category.dart';
 import 'package:memiz_bk/domain/models/entry_date_model/entry_date.dart';
 import 'package:memiz_bk/domain/models/entry_model/entry.dart';
-import 'package:memiz_bk/domain/models/statistics_element_model/statistics_element.dart';
+import 'package:memiz_bk/domain/models/statistics_element_model/expensereport_element.dart';
+
+import '../models/statistics_element_model/incomereport_element.dart';
 
 class DatabaseRepository {
   final ExpensesDatabaseProvider databaseProvider;
@@ -40,6 +43,36 @@ class DatabaseRepository {
       });
     });
   }
+
+  // Future<List<IncomeCategory>> getIncomeCategories() async {
+  //   final catName = databaseProvider.entryCatTable;
+  //   final iconName = databaseProvider.icTable;
+  //   final db = await databaseProvider.database;
+  //   return await db.transaction((txn) async {
+  //     return await txn.rawQuery('''
+  //     SELECT  $catName.categoryId, $catName.title, $catName.orderNum,
+  //     $catName.type, $iconName.iconId, $iconName.localPath,$iconName.color
+  //     FROM $catName
+  //     INNER JOIN $iconName
+  //     ON $catName.iconId = $iconName.iconId
+  //     ORDER BY orderNum
+  //     ''').then((data) {
+  //       final converted = List<Map<String, dynamic>>.from(data);
+  //       return converted.map((e) {
+  //         return IncomeCategory(
+  //           categoryId: e['categoryId'],
+  //           title: e['title'],
+  //           type: e['type'],
+  //           orderNum: e['orderNum'],
+  //           icon: CategoryIcon(
+  //               iconId: e['iconId'],
+  //               localPath: e['localPath'],
+  //               color: e['color']),
+  //         );
+  //       }).toList();
+  //     });
+  //   });
+  // }
 
   Future<List<CategoryIcon>> getAllIcons() async {
     final db = await databaseProvider.database;
@@ -180,7 +213,7 @@ class DatabaseRepository {
     });
   }
 
-  Future<List<StatisticsElement>> getMonthlyStatistics(
+  Future<List<ExpenseReportElement>> getMonthlyStatistics(
       int year, int month) async {
     final int start = DateTime(year, month)
         .subtract(const Duration(days: 1))
@@ -213,7 +246,55 @@ class DatabaseRepository {
           ''').then((data) {
         final converted = List<Map<String, dynamic>>.from(data);
         return converted.map((e) {
-          return StatisticsElement(
+          return ExpenseReportElement(
+            categoryTitle: e['title'],
+            countOfEntries: e['totalCount'],
+            totalAmount: e['sumOfEntries'],
+            monthShare: e['sumOfEntries'] / monthlyAmount * 100,
+            icon: CategoryIcon(
+                iconId: e['iconId'],
+                localPath: e['localPath'],
+                color: e['color']),
+          );
+        }).toList();
+      });
+    });
+  }
+
+  Future<List<IncomeStatisticsElement>> getIncomeMonthlyStatistics(
+      int year, int month) async {
+    final int start = DateTime(year, month)
+        .subtract(const Duration(days: 1))
+        .millisecondsSinceEpoch;
+    final int finish = DateTime(year, month + 1).millisecondsSinceEpoch;
+    final icons = databaseProvider.icTable;
+    final categories = databaseProvider.entryCatTable;
+    final entryTable = databaseProvider.entryTable;
+    final db = await databaseProvider.database;
+    return await db.transaction((txn) async {
+      final int monthlyAmount = await txn.rawQuery('''
+      SELECT SUM(amount) AS sum FROM $entryTable 
+      WHERE amount < 0 
+      AND datetime BETWEEN $start AND $finish
+      ''').then((data) {
+        return data.first['sum'] as int;
+      });
+      return await txn.rawQuery('''
+         SELECT  COUNT(*) totalCount, $entryTable.categoryId, 
+         $categories.title, SUM($entryTable.amount) As sumOfEntries, 
+         $entryTable.dateTime, $icons.iconId, $icons.localPath, $icons.color 
+         FROM $entryTable 
+         INNER JOIN $categories 
+         ON $categories.categoryId = $entryTable.categoryId 
+         JOIN iconsTable 
+         ON $categories.iconId = $icons.iconId 
+         WHERE $categories.type = "income" 
+         AND $entryTable.dateTime BETWEEN $start AND $finish 
+         GROUP BY entryCategoryTable.categoryId, entryCategoryTable.title
+          ''').then((data) {
+        final converted = List<Map<String, dynamic>>.from(data);
+        return converted.map((e) {
+          return IncomeStatisticsElement(
             categoryTitle: e['title'],
             countOfEntries: e['totalCount'],
             totalAmount: e['sumOfEntries'],

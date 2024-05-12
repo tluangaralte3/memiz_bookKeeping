@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:memiz_bk/domain/models/statistics_element_model/statistics_element.dart';
+import 'package:memiz_bk/domain/models/statistics_element_model/expensereport_element.dart';
 import 'package:memiz_bk/utils/helper.dart';
 
 class BlockChart extends StatefulWidget {
   const BlockChart({Key? key, required this.stats}) : super(key: key);
-  final List<StatisticsElement> stats;
+  final List<ExpenseReportElement> stats;
 
   @override
   State<BlockChart> createState() => _BlockChartState();

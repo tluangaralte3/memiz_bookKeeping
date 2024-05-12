@@ -50,8 +50,8 @@ class SettingsScreen extends StatelessWidget {
                           context.read<NavigationBloc>().add(NavigateTab(
                               tabIndex: 0, route: StatisticsScreen.routeName));
                         }),
-                    ChangeLanguage(
-                        onChanged: (value) => context.setLocale(Locale(value))),
+                    // ChangeLanguage(
+                    //     onChanged: (value) => context.setLocale(Locale(value))),
                     SettingOption(
                         icon: Icons.help_center_outlined,
                         title: 'FAQ',

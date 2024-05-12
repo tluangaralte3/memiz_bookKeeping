@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'statistics_element.dart';
+part of 'expensereport_element.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-StatisticsElement _$StatisticsElementFromJson(Map<String, dynamic> json) {
-  return _StatisticsElement.fromJson(json);
+ExpenseReportElement _$ExpenseReportElementFromJson(Map<String, dynamic> json) {
+  return _ExpenseReportElement.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StatisticsElement {
+mixin _$ExpenseReportElement {
   String get categoryTitle => throw _privateConstructorUsedError;
   int get countOfEntries => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
@@ -28,15 +28,15 @@ mixin _$StatisticsElement {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StatisticsElementCopyWith<StatisticsElement> get copyWith =>
+  $ExpenseReportElementCopyWith<ExpenseReportElement> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StatisticsElementCopyWith<$Res> {
-  factory $StatisticsElementCopyWith(
-          StatisticsElement value, $Res Function(StatisticsElement) then) =
-      _$StatisticsElementCopyWithImpl<$Res, StatisticsElement>;
+abstract class $ExpenseReportElementCopyWith<$Res> {
+  factory $ExpenseReportElementCopyWith(ExpenseReportElement value,
+          $Res Function(ExpenseReportElement) then) =
+      _$ExpenseReportElementCopyWithImpl<$Res, ExpenseReportElement>;
   @useResult
   $Res call(
       {String categoryTitle,
@@ -49,9 +49,10 @@ abstract class $StatisticsElementCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StatisticsElementCopyWithImpl<$Res, $Val extends StatisticsElement>
-    implements $StatisticsElementCopyWith<$Res> {
-  _$StatisticsElementCopyWithImpl(this._value, this._then);
+class _$ExpenseReportElementCopyWithImpl<$Res,
+        $Val extends ExpenseReportElement>
+    implements $ExpenseReportElementCopyWith<$Res> {
+  _$ExpenseReportElementCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,11 +102,11 @@ class _$StatisticsElementCopyWithImpl<$Res, $Val extends StatisticsElement>
 }
 
 /// @nodoc
-abstract class _$$StatisticsElementImplCopyWith<$Res>
-    implements $StatisticsElementCopyWith<$Res> {
-  factory _$$StatisticsElementImplCopyWith(_$StatisticsElementImpl value,
-          $Res Function(_$StatisticsElementImpl) then) =
-      __$$StatisticsElementImplCopyWithImpl<$Res>;
+abstract class _$$ExpenseReportElementImplCopyWith<$Res>
+    implements $ExpenseReportElementCopyWith<$Res> {
+  factory _$$ExpenseReportElementImplCopyWith(_$ExpenseReportElementImpl value,
+          $Res Function(_$ExpenseReportElementImpl) then) =
+      __$$ExpenseReportElementImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,11 +121,11 @@ abstract class _$$StatisticsElementImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StatisticsElementImplCopyWithImpl<$Res>
-    extends _$StatisticsElementCopyWithImpl<$Res, _$StatisticsElementImpl>
-    implements _$$StatisticsElementImplCopyWith<$Res> {
-  __$$StatisticsElementImplCopyWithImpl(_$StatisticsElementImpl _value,
-      $Res Function(_$StatisticsElementImpl) _then)
+class __$$ExpenseReportElementImplCopyWithImpl<$Res>
+    extends _$ExpenseReportElementCopyWithImpl<$Res, _$ExpenseReportElementImpl>
+    implements _$$ExpenseReportElementImplCopyWith<$Res> {
+  __$$ExpenseReportElementImplCopyWithImpl(_$ExpenseReportElementImpl _value,
+      $Res Function(_$ExpenseReportElementImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +137,7 @@ class __$$StatisticsElementImplCopyWithImpl<$Res>
     Object? monthShare = null,
     Object? icon = null,
   }) {
-    return _then(_$StatisticsElementImpl(
+    return _then(_$ExpenseReportElementImpl(
       categoryTitle: null == categoryTitle
           ? _value.categoryTitle
           : categoryTitle // ignore: cast_nullable_to_non_nullable
@@ -164,16 +165,16 @@ class __$$StatisticsElementImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$StatisticsElementImpl implements _StatisticsElement {
-  const _$StatisticsElementImpl(
+class _$ExpenseReportElementImpl implements _ExpenseReportElement {
+  const _$ExpenseReportElementImpl(
       {required this.categoryTitle,
       required this.countOfEntries,
       required this.totalAmount,
       required this.monthShare,
       required this.icon});
 
-  factory _$StatisticsElementImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StatisticsElementImplFromJson(json);
+  factory _$ExpenseReportElementImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ExpenseReportElementImplFromJson(json);
 
   @override
   final String categoryTitle;
@@ -188,14 +189,14 @@ class _$StatisticsElementImpl implements _StatisticsElement {
 
   @override
   String toString() {
-    return 'StatisticsElement(categoryTitle: $categoryTitle, countOfEntries: $countOfEntries, totalAmount: $totalAmount, monthShare: $monthShare, icon: $icon)';
+    return 'ExpenseReportElement(categoryTitle: $categoryTitle, countOfEntries: $countOfEntries, totalAmount: $totalAmount, monthShare: $monthShare, icon: $icon)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StatisticsElementImpl &&
+            other is _$ExpenseReportElementImpl &&
             (identical(other.categoryTitle, categoryTitle) ||
                 other.categoryTitle == categoryTitle) &&
             (identical(other.countOfEntries, countOfEntries) ||
@@ -215,28 +216,29 @@ class _$StatisticsElementImpl implements _StatisticsElement {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StatisticsElementImplCopyWith<_$StatisticsElementImpl> get copyWith =>
-      __$$StatisticsElementImplCopyWithImpl<_$StatisticsElementImpl>(
-          this, _$identity);
+  _$$ExpenseReportElementImplCopyWith<_$ExpenseReportElementImpl>
+      get copyWith =>
+          __$$ExpenseReportElementImplCopyWithImpl<_$ExpenseReportElementImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StatisticsElementImplToJson(
+    return _$$ExpenseReportElementImplToJson(
       this,
     );
   }
 }
 
-abstract class _StatisticsElement implements StatisticsElement {
-  const factory _StatisticsElement(
+abstract class _ExpenseReportElement implements ExpenseReportElement {
+  const factory _ExpenseReportElement(
       {required final String categoryTitle,
       required final int countOfEntries,
       required final int totalAmount,
       required final double monthShare,
-      required final CategoryIcon icon}) = _$StatisticsElementImpl;
+      required final CategoryIcon icon}) = _$ExpenseReportElementImpl;
 
-  factory _StatisticsElement.fromJson(Map<String, dynamic> json) =
-      _$StatisticsElementImpl.fromJson;
+  factory _ExpenseReportElement.fromJson(Map<String, dynamic> json) =
+      _$ExpenseReportElementImpl.fromJson;
 
   @override
   String get categoryTitle;
@@ -250,6 +252,6 @@ abstract class _StatisticsElement implements StatisticsElement {
   CategoryIcon get icon;
   @override
   @JsonKey(ignore: true)
-  _$$StatisticsElementImplCopyWith<_$StatisticsElementImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ExpenseReportElementImplCopyWith<_$ExpenseReportElementImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
